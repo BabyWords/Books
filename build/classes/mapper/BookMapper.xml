@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.books.dao.BookDao">
+ <resultMap type="com.books.pojo.Book" id="book">
+    <id column="marc_no" property="marc_no"/>
+    <result column="title" property="title"/>
+    <result column="press" property="press"/>
+    <result column="author" property="author"/>
+    </resultMap>
+	<!-- 此处的resultType就是对应刚刚你在typeAlias节点里面规定的别名 -->
+	<!-- <select id="selectbook" parameterType="int" resultType="book"> select 
+		* from books where marc_no=#{id} </select> -->
+	<select id="getAllBooks" resultType="book">
+		select * from books
+	</select>
+	<select id="getAllBookmarc" resultType="int">
+		select marc_no from books
+	</select>
+		<select id="getAllBookmarc1" resultType="int" parameterType="String">
+		select marc_no from books where title LIKE concat(concat('%',#{booktitle}),'%')
+	</select>
+	<select id="getBookDescription" parameterType="int" resultType="description">
+		select press,author from books where marc_no=#{marc_no}
+	</select>
+	<select id="getBookBymarc_no" parameterType="int" resultType="book">
+		select marc_no,title from books where marc_no=#{marc_no}
+	</select>
+	<insert id="insertbook" parameterType="book">
+		insert into books
+		(marc_no, title, press,author) values (#{marc_no},
+		#{title},#{press},#{author})
+	</insert>
+	<update id="deletebook" parameterType="int">
+		delete from books where
+		marc_no=#{marc_no}
+	</update>
+	<select id="searchbooks" resultType="book" parameterType="String">
+		SELECT * FROM books WHERE title LIKE concat(concat('%',#{title}),'%')
+	</select>
+	<select id="getAllBooksCount" resultType="Integer">
+		select count(*) from books;
+	</select>
+	<select id="getbooks" parameterType="com.books.pojo.Page" resultType="book">
+		SELECT * FROM books limit #{startPos},#{pageRow};
+	</select>
+</mapper>

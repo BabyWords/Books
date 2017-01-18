@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>books</display-name>
+	<welcome-file-list>
+		<welcome-file>showbook.jsp</welcome-file>
+	</welcome-file-list>
+	<!-- 接口servlet定义 -->
+	<servlet>
+		<servlet-name>WechatBooks</servlet-name>
+		<servlet-class>com.books.servlet.wechat.WechatBooks</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>WechatBooks</servlet-name>
+		<url-pattern>/getwechatbooks</url-pattern>
+	</servlet-mapping>
+	<!-- getbooks -->
+	<servlet>
+		<servlet-name>GetAllBooks</servlet-name>
+		<servlet-class>com.books.servlet.web.GetAllBooks</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetAllBooks</servlet-name>
+		<url-pattern>/getallbooks</url-pattern>
+	</servlet-mapping>
+	<!-- addbooks -->
+	<servlet>
+		<servlet-name>AddBooks</servlet-name>
+		<servlet-class>com.books.servlet.web.AddBooks</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddBooks</servlet-name>
+		<url-pattern>/addbooks</url-pattern>
+	</servlet-mapping>
+	<!-- deletebooks -->
+	<servlet>
+		<servlet-name>DeleteBook</servlet-name>
+		<servlet-class>com.books.servlet.web.DeleteBook</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteBook</servlet-name>
+		<url-pattern>/deletebook</url-pattern>
+	</servlet-mapping>
+	<!-- searchbooks -->
+	<servlet>
+		<servlet-name>SearchBooks</servlet-name>
+		<servlet-class>com.books.servlet.web.SearchBooks</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SearchBooks</servlet-name>
+		<url-pattern>/searchbooks</url-pattern>
+	</servlet-mapping>
+	<filter>
+		<filter-name>characterEncodingFilter</filter-name>
+		<filter-class>com.books.util.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encode</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>characterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+</web-app>
