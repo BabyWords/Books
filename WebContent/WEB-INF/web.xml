@@ -5,7 +5,7 @@
 	id="WebApp_ID" version="3.0">
 	<display-name>books</display-name>
 	<welcome-file-list>
-		<welcome-file>showbook.jsp</welcome-file>
+		<welcome-file>toshow.jsp</welcome-file>
 	</welcome-file-list>
 	<!-- 接口servlet定义 -->
 	<servlet>

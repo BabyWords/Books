@@ -5,7 +5,6 @@ import java.util.List;
 import com.books.pojo.Book;
 import com.books.pojo.Description;
 import com.books.pojo.Page;
-//testgithub
 public interface BookDao {
 	//public Book selectbook(int maro_no) throws Exception;
 
